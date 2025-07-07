@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.myapplication.login.LoginActivity;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -26,53 +29,33 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class MainActivity extends AppCompatActivity{
+
+    private View HomeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            int top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top;
-//            v.setPadding(v.getPaddingLeft(), top, v.getPaddingRight(), v.getPaddingBottom());
-//            return insets;
-//        });
 
-        Spinner spinner = findViewById(R.id.dropdown_menu);
-        List<String> dataList = Arrays.asList("动态选项1", "动态选项2");
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, dataList
-        );
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-    }
+        HomeBtn = findViewById(R.id.home_btn);
+        Intent intent = new Intent();
 
+        HomeBtn.setOnClickListener(v-> {
+            intent.setClass(this, LoginActivity.class);
+            startActivity(intent);
+        });
 
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String selectedItem = parent.getItemAtPosition(position).toString();
-        Toast.makeText(MainActivity.this,"选中：" + selectedItem,Toast.LENGTH_SHORT).show();
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().header("Accept-Language","zh-CN").url("https://weapp-api.zyyai.cn:20068/backend/auth/verify/captcha").build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
-            }
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            int top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top;
+            v.setPadding(v.getPaddingLeft(), top, v.getPaddingRight(), v.getPaddingBottom());
+            return insets;
         });
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
-    }
+
+
+
 }

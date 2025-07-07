@@ -2,10 +2,10 @@ package com.example.myapplication.login;
 
 import com.example.myapplication.data.User;
 
-// LoginPresenter.java
 public class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
-    private final LoginContract.Model model;
+    private final LoginContract.Model model; // 声明Model接口
+
 
     public LoginPresenter(LoginContract.Model model) {
         this.model = model;

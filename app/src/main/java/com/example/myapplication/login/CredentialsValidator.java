@@ -8,7 +8,7 @@ public class CredentialsValidator {
      * @param password 密码
      * @return 错误消息（null 表示验证通过）
             */
-    public String validate(String username, String password) {
+    public static String validate(String username, String password) {
         // 规则1：用户名非空
         if (username == null || username.trim().isEmpty()) {
             return "用户名不能为空";

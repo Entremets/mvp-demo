@@ -9,7 +9,6 @@ public interface LoginContract {
         void hideLoading();
         void onLoginSuccess(User user);
         void onLoginFailed(String error);
-        void showInputError(InputField field, String message);
     }
 
     interface Presenter {
@@ -23,8 +22,8 @@ public interface LoginContract {
             void onSuccess(User user);
             void onFailure(String error);
         }
-        void login(String username, String password, OnLoginListener listener);
+
+        void login(String username, String password, OnLoginListener callback);
     }
 
-    enum InputField { USERNAME, PASSWORD }
 }

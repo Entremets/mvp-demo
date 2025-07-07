@@ -1,6 +1,7 @@
-package com.example.myapplication.login;
+package com.example.myapplication.data;
 
-import com.example.myapplication.data.User;
+import com.example.myapplication.login.CredentialsValidator;
+import com.example.myapplication.login.LoginContract;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -8,20 +9,16 @@ import okhttp3.*;
 import java.io.IOException;
 
 public class LoginModel implements LoginContract.Model {
-    private final OkHttpClient httpClient;
-    private final CredentialsValidator validator;
+    private final OkHttpClient httpClient = new OkHttpClient();
+
     private final Gson gson = new Gson();
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    public LoginModel(OkHttpClient httpClient, CredentialsValidator validator) {
-        this.httpClient = httpClient;
-        this.validator = validator;
-    }
 
     @Override
     public void login(String username, String password, OnLoginListener listener) {
         // 1. 验证输入
-        String validationError = validator.validate(username, password);
+        String validationError = CredentialsValidator.validate(username, password);
         if (validationError != null) {
             listener.onFailure(validationError);
             return;
@@ -64,4 +61,5 @@ public class LoginModel implements LoginContract.Model {
             }
         });
     }
+
 }
