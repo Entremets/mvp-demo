@@ -1,7 +1,6 @@
-package com.example.myapplication.data;
+package com.example.myapplication.login;
 
-import com.example.myapplication.login.CredentialsValidator;
-import com.example.myapplication.login.LoginContract;
+import com.example.myapplication.data.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 

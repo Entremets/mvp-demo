@@ -2,7 +2,6 @@ package com.example.myapplication.login;
 
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,9 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.data.LoginModel;
 import com.example.myapplication.data.User;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
@@ -71,15 +68,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void onLoginSuccess(User user) {
         Log.d("onLoginSuccess", "登录成功");
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+//        startActivity(new Intent(this, MainActivity.class));
+//        finish();
     }
 
     @Override
     public void onLoginFailed(String error) {
-        Log.d("onLoginFailed", "登录失败");
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        Log.d("onLoginFailed", "登录失败"+ error);
+//        startActivity(new Intent(this, MainActivity.class));
+//        finish();
     }
 
 }
