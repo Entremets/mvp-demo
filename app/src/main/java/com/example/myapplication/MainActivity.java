@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity{
             if (selectedFragment != null) {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, selectedFragment)
-                        .addToBackStack(null)
+//                        .addToBackStack(null)
                         .commit();
             }
             return true;
@@ -105,31 +105,31 @@ public class MainActivity extends AppCompatActivity{
 
 
         // 添加回退栈监听
-        getSupportFragmentManager().addOnBackStackChangedListener(() -> {
-            // 获取当前显示的Fragment
-            Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-            if (currentFragment != null) {
-                // 根据Fragment类型设置导航栏高亮
-                if (currentFragment instanceof HomeFragment) {
-                    bottomNavigationView.setSelectedItemId(R.id.nav_home);
-                } else if (currentFragment instanceof SearchFragment) {
-                    bottomNavigationView.setSelectedItemId(R.id.nav_search);
-                } else if (currentFragment instanceof ProfileFragment) {
-                    bottomNavigationView.setSelectedItemId(R.id.nav_profile);
-                }
-            }
-        });
+//        getSupportFragmentManager().addOnBackStackChangedListener(() -> {
+//            // 获取当前显示的Fragment
+//            Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+//            if (currentFragment != null) {
+//                // 根据Fragment类型设置导航栏高亮
+//                if (currentFragment instanceof HomeFragment) {
+//                    bottomNavigationView.setSelectedItemId(R.id.nav_home);
+//                } else if (currentFragment instanceof SearchFragment) {
+//                    bottomNavigationView.setSelectedItemId(R.id.nav_search);
+//                } else if (currentFragment instanceof ProfileFragment) {
+//                    bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+//                }
+//            }
+//        });
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+//            getSupportFragmentManager().popBackStack();
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
 
 }
