@@ -13,9 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.data.User;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -66,15 +70,27 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void onLoginSuccess(User user) {
+    public void onLoginSuccess(List<User> userList) {
         Log.d("onLoginSuccess", "登录成功");
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new UserAdapter(userList));
+        UserAdapter adapter = new UserAdapter(userList);
+        adapter.setOnItemClickListener(user -> {
+            // 打印用户名称和邮箱
+            Log.d("USER_CLICK", "Name: " + user.getName() + ", Email: " + user.getEmail());
+        });
+
+
+
+
 //        startActivity(new Intent(this, MainActivity.class));
 //        finish();
     }
 
     @Override
     public void onLoginFailed(String error) {
-        Log.d("onLoginFailed", "登录失败"+ error);
+        Log.d("onLoginFailed",  error);
 //        startActivity(new Intent(this, MainActivity.class));
 //        finish();
     }

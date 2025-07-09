@@ -2,6 +2,8 @@ package com.example.myapplication.login;
 
 import com.example.myapplication.data.User;
 
+import java.util.List;
+
 public class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private final LoginContract.Model model; // 声明Model接口
@@ -27,7 +29,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
         model.login(username, password, new LoginContract.Model.OnLoginListener() {
             @Override
-            public void onSuccess(User user) {
+            public void onSuccess(List<User> user) {
                 if (view != null) {
                     view.hideLoading();
                     view.onLoginSuccess(user);

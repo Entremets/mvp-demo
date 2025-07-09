@@ -2,12 +2,14 @@ package com.example.myapplication.login;
 
 import com.example.myapplication.data.User;
 
+import java.util.List;
+
 // LoginContract.java
 public interface LoginContract {
     interface View {
         void showLoading();
         void hideLoading();
-        void onLoginSuccess(User user);
+        void onLoginSuccess(List<User> user);
         void onLoginFailed(String error);
     }
 
@@ -19,7 +21,7 @@ public interface LoginContract {
 
     interface Model {
         interface OnLoginListener {
-            void onSuccess(User user);
+            void onSuccess(List<User> user);
             void onFailure(String error);
         }
 
