@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="?attr/actionBarSize"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="MissingClass">
 
     <!--    <fragment-->
     <!--        android:id="@+id/my_fragment"-->
@@ -24,6 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="跳转登录" />
+
+    <com.example.myapplication.customView.RoundButton
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="点击我"
+        app:borderColor="#FF00FF00"
+        app:borderWidth="3dp"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
