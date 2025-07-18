@@ -95,4 +95,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 //        finish();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.detachView();
+    }
 }
