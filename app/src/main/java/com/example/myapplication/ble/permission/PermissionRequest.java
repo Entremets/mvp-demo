@@ -1,4 +1,4 @@
-package com.example.myapplication.ble.permisson;
+package com.example.myapplication.ble.permission;
 
 import android.app.Activity;
 import android.content.Context;
