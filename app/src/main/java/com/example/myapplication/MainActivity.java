@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.myapplication.ble.BleActivity;
 import com.example.myapplication.login.LoginActivity;
 
 import java.io.IOException;
@@ -39,19 +41,29 @@ public class MainActivity extends AppCompatActivity{
 
     private View HomeBtn;
 
+    private View HomeBtn2;
+
     private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         HomeBtn = findViewById(R.id.home_btn);
+        HomeBtn2 = findViewById(R.id.home_btn2);
         Intent intent = new Intent();
 
         HomeBtn.setOnClickListener(v-> {
             intent.setClass(this, LoginActivity.class);
+            startActivity(intent);
+        });
+
+        HomeBtn2.setOnClickListener(v-> {
+            intent.setClass(this, BleActivity.class);
             startActivity(intent);
         });
 
