@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 外层使用LinearLayout，通过权重分配左右布局 -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    android:orientation="horizontal"
+    android:id="@+id/demo">
+
+    <!-- 左侧导航栏 - 固定宽度280dp -->
+    <LinearLayout
+        android:id="@+id/nav_container"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#2C2C2C">
+
+        <!-- ScrollView优化：内部嵌套一个垂直LinearLayout作为容器 -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 返回箭头 + 标题 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/back"
+                        android:contentDescription="返回按钮"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设置"
+                        android:textSize="20sp"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginStart="16dp" />
+                </LinearLayout>
+
+                <!-- 导航菜单项 -->
+                <TextView
+                    android:id="@+id/tv_check_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="24dp"
+                    android:text="检查设置"
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
+                    android:background="?android:attr/selectableItemBackground" />
+
+                <TextView
+                    android:id="@+id/tv_accessibility"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="24dp"
+                    android:text="辅助功能开关"
+                    android:textSize="16sp"
+                    android:textColor="#B0B0B0"
+                    android:background="?android:attr/selectableItemBackground" />
+
+                <TextView
+                    android:id="@+id/tv_brightness_sound"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="24dp"
+                    android:text="亮度与声音"
+                    android:textSize="16sp"
+                    android:textColor="#B0B0B0"
+                    android:background="?android:attr/selectableItemBackground" />
+
+                <TextView
+                    android:id="@+id/tv_time_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="24dp"
+                    android:text="时间与语言"
+                    android:textSize="16sp"
+                    android:textColor="#B0B0B0"
+                    android:background="?android:attr/selectableItemBackground" />
+
+                <TextView
+                    android:id="@+id/tv_system"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="24dp"
+                    android:text="系统设置"
+                    android:textSize="16sp"
+                    android:textColor="#B0B0B0"
+                    android:background="?android:attr/selectableItemBackground" />
+
+                <TextView
+                    android:id="@+id/tv_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="24dp"
+                    android:text="关于"
+                    android:textSize="16sp"
+                    android:textColor="#B0B0B0"
+                    android:background="?android:attr/selectableItemBackground" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- 右侧内容容器 - 占满剩余宽度 -->
+    <FrameLayout
+        android:id="@+id/content_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+    android:background="#1E1E1E" />
+
+</LinearLayout>

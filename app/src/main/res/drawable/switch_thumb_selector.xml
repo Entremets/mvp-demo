@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 开关开启时的滑块图片 -->
+    <item android:state_checked="true" android:drawable="@drawable/switch_open" />
+    <!-- 开关关闭时的滑块图片 -->
+    <item android:state_checked="false" android:drawable="@drawable/switch_close" />
+</selector>
